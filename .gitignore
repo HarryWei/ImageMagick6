@@ -8,6 +8,8 @@
 /config/type-ghostscript.xml
 /config/type-windows.xml
 /config/type.xml
+/config/configure.xml
+/config/type-urw-base35.xml
 
 /Magick++/bin/Magick++-config
 /Magick++/demo/*_out*
