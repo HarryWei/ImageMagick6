@@ -50,3 +50,5 @@ echo "Running $CMD..."
 i=6
 #time LD_PRELOAD=$PRELOAD_LIB $CMD &> out$i.txt
 time $CMD &> out$i.txt
+
+#TODO: add more Imagick commands.
