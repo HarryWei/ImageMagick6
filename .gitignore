@@ -85,6 +85,7 @@
 /magick.sh
 /perl-sources
 /test-suite.log
+/results
 
 *.o
 *.lo
