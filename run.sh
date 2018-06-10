@@ -1,6 +1,6 @@
 #!/bin/bash
 
-app="ImageMagic6"
+app="ImageMagick6"
 
 WOVPAIR_HOMO="$HOME/workshop/vPair/apps/$app/results/wovpair/homo"
 WVPAIR_HOMO="$HOME/workshop/vPair/apps/$app/results/wvpair/homo"
