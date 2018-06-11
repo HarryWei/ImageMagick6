@@ -164,10 +164,10 @@ done
 remove_tmp
 
 ##montage
-for i in 1 2 3 4 5
-do
-	ssh $kvm1@$ip1 "time taskset -c 0-22 $montage_bin $m122 $k150 $tmp" &>> $ctx/vm1.montage &
-	ssh $kvm2@$ip2 "time taskset -c 0-22 $montage_bin $m122 $k150 $tmp" &>> $ctx/vm2.montage
-	sleep 10
-done
-remove_tmp
+#for i in 1 2 3 4 5
+#do
+#	ssh $kvm1@$ip1 "time taskset -c 0-22 $montage_bin $m122 $k150 $tmp" &>> $ctx/vm1.montage &
+#	ssh $kvm2@$ip2 "time taskset -c 0-22 $montage_bin $m122 $k150 $tmp" &>> $ctx/vm2.montage
+#	sleep 10
+#done
+#remove_tmp

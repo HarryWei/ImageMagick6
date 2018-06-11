@@ -83,7 +83,7 @@ sleep 5
 ssh $kvm2@$ip2 "/home/$kvm2/parsec-3.0/parsec/vPair/inVM/accurate_cpu" >> $ctx/vm2.convert.edge_detect &
 for i in 1 2 3 4 5
 do
-	ssh $kvm1@$ip1 "time taskset -c 0-22 $convert_bin $para $m122 -colorspace Gray  -edge 1 -negate $tmp" &>> $ctx/vm1.convert.edge_detect
+	ssh $kvm1@$ip1 "time taskset -c 0-22 $convert_bin $m122 -colorspace Gray  -edge 1 -negate $tmp" &>> $ctx/vm1.convert.edge_detect
 	#ssh $kvm2@$ip2 "time taskset -c 0-22 $convert_bin $m122 -colorspace Gray  -edge 1 -negate $tmp" &>> $ctx/vm2.convert.edge_detect
 	#sleep 10
 done
@@ -179,9 +179,10 @@ sleep 5
 ssh $kvm2@$ip2 "/home/$kvm2/parsec-3.0/parsec/vPair/inVM/accurate_cpu" >> $ctx/vm2.mogrify.resize &
 for i in 1 2 3 4 5
 do
-	ssh $kvm1@$ip1 "time taskset -c 0-22 $mogrify_bin -resize 150% $m122" &>> $ctx/vm1.mogrify.resize
+	ssh $kvm1@$ip1 "time taskset -c 0-22 $mogrify_bin -resize 50% $m122" &>> $ctx/vm1.mogrify.resize
 	#ssh $kvm2@$ip2 "time taskset -c 0-22 $mogrify_bin -resize 150% $m122" &>> $ctx/vm2.mogrify.resize
 	#sleep 10
+	#remove_tmp
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
 remove_tmp
@@ -200,13 +201,13 @@ remove_tmp
 sleep 5
 
 #montage
-ssh $kvm2@$ip2 "/home/$kvm2/parsec-3.0/parsec/vPair/inVM/accurate_cpu" >> $ctx/vm2.montage &
-for i in 1 2 3 4 5
-do
-	ssh $kvm1@$ip1 "time taskset -c 0-22 $montage_bin $m122 $k150 $tmp" &>> $ctx/vm1.montage
-	#ssh $kvm2@$ip2 "time taskset -c 0-22 $montage_bin $m122 $k150 $tmp" &>> $ctx/vm2.montage
-	#sleep 10
-done
-ssh $kvm2@$ip2 "killall accurate_cpu"
-remove_tmp
-sleep 5
+#ssh $kvm2@$ip2 "/home/$kvm2/parsec-3.0/parsec/vPair/inVM/accurate_cpu" >> $ctx/vm2.montage &
+#for i in 1 2 3 4 5
+#do
+#	ssh $kvm1@$ip1 "time taskset -c 0-22 $montage_bin $m122 $k150 $tmp" &>> $ctx/vm1.montage
+#	#ssh $kvm2@$ip2 "time taskset -c 0-22 $montage_bin $m122 $k150 $tmp" &>> $ctx/vm2.montage
+#	#sleep 10
+#done
+#ssh $kvm2@$ip2 "killall accurate_cpu"
+#remove_tmp
+#sleep 5
