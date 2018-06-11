@@ -19,10 +19,19 @@ compare_bin="$HOME_DIR/compare"
 convert_bin="$HOME_DIR/convert"
 mogrify_bin="$HOME_DIR/mogrify"
 montage_bin="$HOME_DIR/montage"
-m122="$HOME_DIR/122m.jpg"
+m122="$HOME_DIR/11m.jpg"
 m78="$HOME_DIR/78m.jpg"
 k150="$HOME_DIR/150k.jpg"
 tmp="$HOME_DIR/tmp.jpg"
+
+function remove_tmp() {
+    ssh $kvm1@$ip1 "rm $HOME_DIR/122m.jpg~"
+    ssh $kvm1@$ip1 "rm $HOME_DIR/122m.jpg~~"
+    ssh $kvm1@$ip1 "rm $HOME_DIR/122m.jpg~~~"
+    ssh $kvm2@$ip2 "rm $HOME_DIR/122m.jpg~"
+    ssh $kvm2@$ip2 "rm $HOME_DIR/122m.jpg~~"
+    ssh $kvm2@$ip2 "rm $HOME_DIR/122m.jpg~~~"
+}
 
 #compare
 ssh $kvm2@$ip2 "/home/$kvm2/parsec-3.0/parsec/vPair/inVM/accurate_cpu" >> $ctx/vm2.compare &
@@ -33,6 +42,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #compare channel_red
@@ -44,6 +54,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #compare compose
@@ -55,6 +66,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #convert edge_detect
@@ -66,6 +78,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #convert blur
@@ -77,6 +90,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #convert charcoal_effect
@@ -88,6 +102,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #convert draw
@@ -99,6 +114,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #convert paint_effect
@@ -110,6 +126,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #convert sharpen
@@ -121,6 +138,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #convert fft
@@ -132,6 +150,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #convert shear
@@ -143,6 +162,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #mogrify resize
@@ -154,6 +174,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #mogrify segment
@@ -165,6 +186,7 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
 
 #montage
@@ -176,4 +198,5 @@ do
 	#sleep 10
 done
 ssh $kvm2@$ip2 "killall accurate_cpu"
+remove_tmp
 sleep 5
