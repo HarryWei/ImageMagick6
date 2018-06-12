@@ -11,8 +11,8 @@
 # sudo apt-get install libjpeg62-dev
 #
 
-kvm1="kvm1"
-kvm2="kvm1"
+kvm1="wwjia"
+kvm2="wwjia"
 #ip1="192.168.122.96"
 #ip2="192.168.122.98"
 ctx=$2
@@ -49,8 +49,8 @@ function remove_tmp() {
 ##compare
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $compare_bin $m122 $k150 $tmp &>> $ctx/vm1.compare &
-	time taskset -c 0-22 $compare_bin $m122 $k150 $tmp &>> $ctx/vm2.compare
+	{ time taskset -c 0-22 $compare_bin $m122 $k150 $tmp; } &>> $ctx/vm1.compare &
+	{ time taskset -c 0-22 $compare_bin $m122 $k150 $tmp; } &>> $ctx/vm2.compare
 	sleep 10
 done
 remove_tmp
@@ -58,8 +58,8 @@ remove_tmp
 ##compare channel_red
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $compare_bin -channel red -metric PSNR $m122 $k150 $tmp &>> $ctx/vm1.compare.channel_red &
-	time taskset -c 0-22 $compare_bin -channel red -metric PSNR $m122 $k150 $tmp &>> $ctx/vm2.compare.channel_red
+	{ time taskset -c 0-22 $compare_bin -channel red -metric PSNR $m122 $k150 $tmp; } &>> $ctx/vm1.compare.channel_red &
+	{ time taskset -c 0-22 $compare_bin -channel red -metric PSNR $m122 $k150 $tmp; } &>> $ctx/vm2.compare.channel_red
 	sleep 10
 done
 remove_tmp
@@ -67,8 +67,8 @@ remove_tmp
 ##compare compose
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $compare_bin -compose src $m122 $k150 $tmp &>> $ctx/vm1.compare.compose &
-	time taskset -c 0-22 $compare_bin -compose src $m122 $k150 $tmp &>> $ctx/vm2.compare.compose
+	{ time taskset -c 0-22 $compare_bin -compose src $m122 $k150 $tmp; } &>> $ctx/vm1.compare.compose &
+	{ time taskset -c 0-22 $compare_bin -compose src $m122 $k150 $tmp; } &>> $ctx/vm2.compare.compose
 	sleep 10
 done
 remove_tmp
@@ -76,8 +76,8 @@ remove_tmp
 ##convert edge_detect
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $convert_bin $m122 -colorspace Gray  -edge 1 -negate $tmp &>> $ctx/vm1.convert.edge_detect &
-	time taskset -c 0-22 $convert_bin $m122 -colorspace Gray  -edge 1 -negate $tmp &>> $ctx/vm2.convert.edge_detect
+	{ time taskset -c 0-22 $convert_bin $m122 -colorspace Gray  -edge 1 -negate $tmp; } &>> $ctx/vm1.convert.edge_detect &
+	{ time taskset -c 0-22 $convert_bin $m122 -colorspace Gray  -edge 1 -negate $tmp; } &>> $ctx/vm2.convert.edge_detect
 	sleep 10
 done
 remove_tmp
@@ -85,8 +85,8 @@ remove_tmp
 ##convert blur
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $convert_bin $m122 -blur 0x8 $tmp &>> $ctx/vm1.convert.blur &
-	time taskset -c 0-22 $convert_bin $m122 -blur 0x8 $tmp &>> $ctx/vm2.convert.blur
+	{ time taskset -c 0-22 $convert_bin $m122 -blur 0x8 $tmp; } &>> $ctx/vm1.convert.blur &
+	{ time taskset -c 0-22 $convert_bin $m122 -blur 0x8 $tmp; } &>> $ctx/vm2.convert.blur
 	sleep 10
 done
 remove_tmp
@@ -94,8 +94,8 @@ remove_tmp
 ##convert charcoal_effect
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $convert_bin $m122 -charcoal 3 $tmp &>> $ctx/vm1.convert.charcoal &
-	time taskset -c 0-22 $convert_bin $m122 -charcoal 3 $tmp &>> $ctx/vm2.convert.charcoal
+	{ time taskset -c 0-22 $convert_bin $m122 -charcoal 3 $tmp; } &>> $ctx/vm1.convert.charcoal &
+	{ time taskset -c 0-22 $convert_bin $m122 -charcoal 3 $tmp; } &>> $ctx/vm2.convert.charcoal
 	sleep 10
 done
 remove_tmp
@@ -103,8 +103,8 @@ remove_tmp
 ##convert draw
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $convert_bin -size 15360x8640 gradient:green-yellow $tmp &>> $ctx/vm1.convert.draw &
-	time taskset -c 0-22 $convert_bin -size 15360x8640 gradient:green-yellow $tmp &>> $ctx/vm2.convert.draw
+	{ time taskset -c 0-22 $convert_bin -size 15360x8640 gradient:green-yellow $tmp; } &>> $ctx/vm1.convert.draw &
+	{ time taskset -c 0-22 $convert_bin -size 15360x8640 gradient:green-yellow $tmp; } &>> $ctx/vm2.convert.draw
 	sleep 10
 done
 remove_tmp
@@ -112,8 +112,8 @@ remove_tmp
 ##convert paint_effect
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $convert_bin $m122 -morphology CloseI Disk:2.5 $tmp &>> $ctx/vm1.convert.paint_effect &
-	time taskset -c 0-22 $convert_bin $m122 -morphology CloseI Disk:2.5 $tmp &>> $ctx/vm2.convert.paint_effect
+	{ time taskset -c 0-22 $convert_bin $m122 -morphology CloseI Disk:2.5 $tmp; } &>> $ctx/vm1.convert.paint_effect &
+	{ time taskset -c 0-22 $convert_bin $m122 -morphology CloseI Disk:2.5 $tmp; } &>> $ctx/vm2.convert.paint_effect
 	sleep 10
 done
 remove_tmp
@@ -121,8 +121,8 @@ remove_tmp
 ##convert sharpen
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $convert_bin $m122 -sharpen 0x1 $tmp &>> $ctx/vm1.convert.sharpen &
-	time taskset -c 0-22 $convert_bin $m122 -sharpen 0x1 $tmp &>> $ctx/vm2.convert.sharpen
+	{ time taskset -c 0-22 $convert_bin $m122 -sharpen 0x1 $tmp; } &>> $ctx/vm1.convert.sharpen &
+	{ time taskset -c 0-22 $convert_bin $m122 -sharpen 0x1 $tmp; } &>> $ctx/vm2.convert.sharpen
 	sleep 10
 done
 remove_tmp
@@ -130,8 +130,8 @@ remove_tmp
 ##convert fft
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $convert_bin $m122 -fft +depth +adjoin $tmp &>> $ctx/vm1.convert.fft &
-	time taskset -c 0-22 $convert_bin $m122 -fft +depth +adjoin $tmp &>> $ctx/vm2.convert.fft
+	{ time taskset -c 0-22 $convert_bin $m122 -fft +depth +adjoin $tmp; } &>> $ctx/vm1.convert.fft &
+	{ time taskset -c 0-22 $convert_bin $m122 -fft +depth +adjoin $tmp; } &>> $ctx/vm2.convert.fft
 	sleep 10
 done
 remove_tmp
@@ -139,8 +139,8 @@ remove_tmp
 ##convert shear
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $convert_bin $m122 -background Blue  -shear 20x0 $tmp &>> $ctx/vm1.convert.shear &
-	time taskset -c 0-22 $convert_bin $m122 -background Blue  -shear 20x0 $tmp &>> $ctx/vm2.convert.shear
+	{ time taskset -c 0-22 $convert_bin $m122 -background Blue  -shear 20x0 $tmp; } &>> $ctx/vm1.convert.shear &
+	{ time taskset -c 0-22 $convert_bin $m122 -background Blue  -shear 20x0 $tmp; } &>> $ctx/vm2.convert.shear
 	sleep 10
 done
 remove_tmp
@@ -148,8 +148,8 @@ remove_tmp
 ##mogrify resize
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $mogrify_bin -resize 50% $m122 &>> $ctx/vm1.mogrify.resize &
-	time taskset -c 0-22 $mogrify_bin -resize 50% $m122 &>> $ctx/vm2.mogrify.resize
+	{ time taskset -c 0-22 $mogrify_bin -resize 50% $m122; } &>> $ctx/vm1.mogrify.resize &
+	{ time taskset -c 0-22 $mogrify_bin -resize 50% $m122; } &>> $ctx/vm2.mogrify.resize
 	sleep 10
 done
 remove_tmp
@@ -157,8 +157,8 @@ remove_tmp
 ##mogrify segment
 for i in 1 2 3 4 5
 do
-	time taskset -c 0-22 $mogrify_bin -segment 128000x60 $m78 &>> $ctx/vm1.mogrify.segment &
-	time taskset -c 0-22 $mogrify_bin -segment 128000x60 $m78 &>> $ctx/vm2.mogrify.segment
+	{ time taskset -c 0-22 $mogrify_bin -segment 128000x60 $m78; } &>> $ctx/vm1.mogrify.segment &
+	{ time taskset -c 0-22 $mogrify_bin -segment 128000x60 $m78; } &>> $ctx/vm2.mogrify.segment
 	sleep 10
 done
 remove_tmp

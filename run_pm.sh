@@ -1,9 +1,9 @@
 #!/bin/bash
 
-bench="parsec"
+bench="ImageMagick6"
 
-PM_HOMO="$HOME/workshop/vPair/apps/$bench/vPair/results/pm/homo"
-PM_HETE="$HOME/workshop/vPair/apps/$bench/vPair/results/pm/hete"
+PM_HOMO="$HOME/workshop/vPair/apps/$bench/results/pm/homo"
+PM_HETE="$HOME/workshop/vPair/apps/$bench/results/pm/hete"
 
 echo "$PM_HOMO"
 echo "$PM_HETE"
